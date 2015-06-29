@@ -32,12 +32,13 @@ class TasksController < ApplicationController
       render :edit
     end
   end
-  #
-  # def destroy
-  #   @task = Task.find(params[:id])
-  #   @task.destroy
-  #   redirect_to lists_path
-  # end
+
+  def destroy
+    @list = List.find(params[:list_id])
+    @task = @list.tasks.find(params[:id])
+    @task.destroy
+    redirect_to lists_path
+  end
 
   private
   def task_params
