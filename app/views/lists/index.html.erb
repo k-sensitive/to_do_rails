@@ -5,3 +5,19 @@
     <li><%= link_to list.name, list_path(list) %></li>
   <% end %>
 </ul>
+
+<h3>Finished Tasks</h3>
+<ul>
+<% Task.done.each do |task| %>
+<li><%= task.description %></li>
+<% end %>
+</ul>
+
+<h3>Unfinished Tasks</h3>
+<ul>
+<% Task.notDone.each do |task| %>
+<li><%= task.description %></li>
+<% end %>
+</ul>
+
+<p><%= link_to "Add a list", new_list_path %></p>

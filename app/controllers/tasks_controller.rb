@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 
   def new
     @list = List.find(params[:list_id])
-    @task = @list.tasks.new
+    @task = @list.tasks.new()
     render :new
   end
 
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:description)
+    params.require(:task).permit(:description, :done)
   end
 
 end

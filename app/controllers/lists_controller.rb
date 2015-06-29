@@ -6,6 +6,8 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @doneTasks = @list.tasks.where(:done => true)
+    @notDoneTasks = @list.tasks.where(:done => false)
     render :show
   end
 
