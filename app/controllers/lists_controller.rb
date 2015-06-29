@@ -1,13 +1,13 @@
 class ListsController < ApplicationController
   def index
-    @lists = List.all
+    @lists = List.all.sort_by{|object| object.name.downcase}
     render :index
   end
 
   def show
     @list = List.find(params[:id])
-    @doneTasks = @list.tasks.where(:done => true)
-    @notDoneTasks = @list.tasks.where(:done => false)
+    @doneTasks = @list.tasks.where(:done => true).sort_by{|object| object.description.downcase}
+    @notDoneTasks = @list.tasks.where(:done => false).sort_by{|object| object.description.downcase}
     render :show
   end
 
