@@ -3,44 +3,44 @@
 <h1><%= @list.name %></h1>
 
 <% if @list.tasks.any? %>
-  <h4>Here are the tasks for this list:</h4>
-
-  <h3>Not done tasks:</h3>
-  <ul>
-    <% @notDoneTasks.each do |task| %>
-      <li>
-        <h3><%= task.description %></h3>
-        <%= link_to "Edit", edit_list_task_path(@list, task) %> |
-        <%= link_to "Delete", list_task_path(@list, task),
-                                 :data => {:confirm => "Are you sure?",
-                                                :method => "delete"} %>
-      </li>
-      <br />
-    <% end %>
-  </ul>
-
-  <h3>Done tasks:</h3>
-  <ul>
-    <% @doneTasks.each do |task| %>
-      <li>
-        <h3><%= task.description %></h3>
-        <%= link_to "Edit", edit_list_task_path(@list, task) %> |
-        <%= link_to "Delete", list_task_path(@list, task),
-                                 :data => {:confirm => "Are you sure?",
-                                                :method => "delete"} %>
-      </li>
-      <br />
-    <% end %>
-  </ul>
-
+  <div class="col-sm-6">
+    <h3>Not done tasks:</h3>
+    <ul>
+      <% @notDoneTasks.each do |task| %>
+        <li>
+          <h3><%= task.description %></h3>
+          <%= link_to "Edit", edit_list_task_path(@list, task) %> |
+          <%= link_to "Delete", list_task_path(@list, task),
+                                   :data => {:confirm => "Are you sure?",
+                                                  :method => "delete"} %>
+        </li>
+        <br />
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-sm-6">
+    <h3>Done tasks:</h3>
+    <ul>
+      <% @doneTasks.each do |task| %>
+        <li>
+          <h3><%= task.description %></h3>
+          <%= link_to "Edit", edit_list_task_path(@list, task) %> |
+          <%= link_to "Delete", list_task_path(@list, task),
+                                   :data => {:confirm => "Are you sure?",
+                                                  :method => "delete"} %>
+        </li>
+        <br />
+      <% end %>
+    </ul>
+  </div>
 <% else %>
   <p>There are no tasks yet!</p>
 <% end %>
 
-<p><%= link_to "Add a task", new_list_task_path(@list) %></p>
-<p><%= link_to "Edit List", edit_list_path(@list) %></p>
+<p><%= link_to "Add a task", new_list_task_path(@list), :class => 'btn btn-warning' %></p>
+<p><%= link_to "Edit List", edit_list_path(@list), :class => 'btn btn-success' %></p>
 <p><%= link_to "Delete List", list_path(@list),
                         :data => {:confirm => "Are you sure?",
-                                       :method => "delete"} %></p>
+                                       :method => "delete"}, :class => 'btn btn-danger' %></p>
 
-<p><%= link_to "Return to lists", lists_path %></p>
+<p><%= link_to "Return to lists", lists_path, :class => 'btn btn-info' %></p>
